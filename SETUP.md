@@ -25,7 +25,7 @@ SNOWFLAKE_USER_PASSWORD=your_password
 SNOWFLAKE_ROLE=your_role
 SNOWFLAKE_WAREHOUSE=your_warehouse
 
-# Optional: For REST API calls
+#For REST API calls
 SNOWFLAKE_BEARER_TOKEN=your_bearer_token
 ```
 
