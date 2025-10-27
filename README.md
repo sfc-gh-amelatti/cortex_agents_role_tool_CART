@@ -1,29 +1,25 @@
 # Snowflake Agent Permissions Automation
 
-This solution provides a comprehensive Snowflake Stored Procedure that automates least-permissions role generation for Snowflake Cortex Agents.
+This solution provides a comprehensive Snowflake in Streamlit app that automates least-permissions role generation for Snowflake Cortex Agents.
 
 ## Overview
 
-The `GENERATE_AGENT_PERMISSIONS` stored procedure automates the process of:
+The CART (Cortex Agent Role Tool) app automates the process of:
 
-1. **REST API Integration**: Makes calls to DESCRIBE agent objects and retrieves relevant analyst + search tools + agent database/schema information
+1. **Agent Detail Evaluation**: Makes calls to DESCRIBE agent objects and retrieves relevant analyst + search tools + agent database/schema information
 2. **Semantic View Analysis**: Executes SQL queries to get individual semantic view YAML definitions and identifies underlying tables
 3. **Permission Generation**: Returns comprehensive SQL output for permissions that an admin can execute
 
 ## Features
 
 - ✅ **Automated Agent Discovery**: Can discover agent location if database/schema not provided
-- ✅ **REST API Simulation**: Framework for making actual REST API calls to agent objects
 - ✅ **Semantic View Processing**: Executes `SYSTEM$READ_YAML_FROM_SEMANTIC_VIEW` for each semantic view
 - ✅ **YAML Parsing**: Extracts table permissions from semantic view YAML definitions
 - ✅ **Comprehensive Permission Scripts**: Generates complete SQL scripts with role creation, user creation, and all necessary grants
-- ✅ **Error Handling**: Robust error handling with detailed logging
-- ✅ **Output Storage**: Stores generated scripts in configurable output tables
-- ✅ **Helper Functions**: Additional functions for viewing and retrieving generated scripts
 
 ## Output
 
-The procedure returns a status message and stores the generated SQL script in the specified output table.
+The app generates a SQL script that can be copied and pasted into a Snowflake Worksheet to create a least-permissions role to use the agent/
 
 ### Generated SQL Script Structure
 
@@ -111,11 +107,3 @@ SELECT 'Setup complete for role ' || $AGENT_ROLE_NAME AS "Status";
 4. **Monitor Usage**: Monitor the usage of generated roles and users
 5. **Regular Audits**: Regularly audit permissions to ensure they remain appropriate
 
-## Support
-
-For issues or questions:
-
-1. Check the error messages in the output table
-2. Verify your Snowflake permissions
-3. Ensure all required packages are installed
-4. Review the generated SQL scripts for syntax errors
